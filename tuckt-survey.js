@@ -686,7 +686,13 @@ export default function TucktSurvey() {
   };
 
   const submit = () => {
-    console.log("Survey answers:", answers);
+    await fetch("/api/submit", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(answers),
+});
     // In production: POST to your backend / Airtable / Tally webhook
     advance();
   };
