@@ -685,7 +685,7 @@ export default function TucktSurvey() {
     }, 220);
   };
 
-  const submit = () => {
+  const submit = async () => {
     await fetch("/api/submit", {
   method: "POST",
   headers: {
