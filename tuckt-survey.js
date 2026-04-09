@@ -66,7 +66,7 @@ const QUESTIONS = [
     label: "What type of home do you live in?",
     sub: "This helps us understand your storage context.",
     options: [
-      "Owned apartment (₹2–4 Crore range)",
+      "Owned apartment (₹1–4 Crore range)",
       "Owned apartment (₹4–8 Crore range)",
       "Owned apartment (₹8 Crore+)",
       "Rented apartment (₹40,000–80,000/month)",
