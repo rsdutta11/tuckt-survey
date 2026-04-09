@@ -685,14 +685,24 @@ export default function TucktSurvey() {
     }, 220);
   };
 
-  const submit = async () => {
-    await fetch("/api/submit", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(answers),
-});
+ const submit = async () => {
+  try {
+    console.log("Submitting:", answers);
+
+    const res = await fetch("YOUR_GOOGLE_SCRIPT_URL", {
+      method: "POST",
+      body: JSON.stringify(answers),
+    });
+
+    const text = await res.text();
+    console.log("Response:", text);
+
+    advance();
+  } catch (err) {
+    console.error("Submission error:", err);
+    alert("Submission failed. Try again.");
+  }
+};
     // In production: POST to your backend / Airtable / Tally webhook
     advance();
   };
