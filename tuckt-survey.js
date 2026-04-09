@@ -689,7 +689,7 @@ export default function TucktSurvey() {
   try {
     console.log("Submitting:", answers);
 
-    const res = await fetch("YOUR_GOOGLE_SCRIPT_URL", {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbyfr_-3E9kHT93dfC251P2L_dhBS13asRxKnR-U0H8fdoWfIiMT24ME3i0I17-0I9NE/exec", {
       method: "POST",
       body: JSON.stringify(answers),
     });
