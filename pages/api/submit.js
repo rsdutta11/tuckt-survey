@@ -17,9 +17,12 @@ export default async function handler(req, res) {
 
     const response = await base(process.env.AIRTABLE_TABLE_NAME).create([
       {
-        fields: {
-          ...data,
-        },
+       fields: Object.fromEntries(
+  Object.entries(data).map(([key, value]) => [
+    key,
+    Array.isArray(value) ? value.join(", ") : value
+  ])
+),
       },
     ]);
 
