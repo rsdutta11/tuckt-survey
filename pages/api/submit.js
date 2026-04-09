@@ -1,3 +1,9 @@
+console.log("ENV CHECK:", {
+  keyExists: !!process.env.AIRTABLE_API_KEY,
+  keyPreview: process.env.AIRTABLE_API_KEY?.slice(0,5),
+  base: process.env.AIRTABLE_BASE_ID,
+  table: process.env.AIRTABLE_TABLE_NAME
+    
 import Airtable from "airtable";
 
 export default async function handler(req, res) {
