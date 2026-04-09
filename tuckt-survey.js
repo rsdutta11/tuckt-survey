@@ -685,7 +685,7 @@ export default function TucktSurvey() {
     }, 220);
   };
 
- const submit = async () => {
+const submit = async () => {
   try {
     console.log("Submitting:", answers);
 
@@ -697,16 +697,12 @@ export default function TucktSurvey() {
     const text = await res.text();
     console.log("Response:", text);
 
-    advance();
+    advance(); // ✅ correctly inside function
   } catch (err) {
     console.error("Submission error:", err);
     alert("Submission failed. Try again.");
   }
 };
-    // In production: POST to your backend / Airtable / Tally webhook
-    advance();
-  };
-
   useEffect(() => {
     // Auto-advance on single select after brief delay
     if (q && (q.type === "single" || q.type === "concept") && answer) {
