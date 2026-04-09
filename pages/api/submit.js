@@ -27,13 +27,11 @@ export default async function handler(req, res) {
       ])
     );
 
-    const response = await base(process.env.AIRTABLE_TABLE_NAME).create([
+    await base(process.env.AIRTABLE_TABLE_NAME).create([
       {
         fields: formattedData,
       },
     ]);
-
-    console.log("AIRTABLE RESPONSE:", response);
 
     res.status(200).json({ success: true });
   } catch (error) {
