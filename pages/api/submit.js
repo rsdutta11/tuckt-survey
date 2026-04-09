@@ -1,6 +1,8 @@
 import Airtable from "airtable";
 
 export default async function handler(req, res) {
+  console.log("API HIT");
+
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
@@ -11,8 +13,9 @@ export default async function handler(req, res) {
     }).base(process.env.AIRTABLE_BASE_ID);
 
     const data = req.body;
+    console.log("DATA RECEIVED:", data);
 
-    await base(process.env.AIRTABLE_TABLE_NAME).create([
+    const response = await base(process.env.AIRTABLE_TABLE_NAME).create([
       {
         fields: {
           ...data,
@@ -20,9 +23,11 @@ export default async function handler(req, res) {
       },
     ]);
 
+    console.log("AIRTABLE RESPONSE:", response);
+
     res.status(200).json({ success: true });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to save response" });
+    console.error("AIRTABLE ERROR:", error);
+    res.status(500).json({ error: error.message });
   }
 }
